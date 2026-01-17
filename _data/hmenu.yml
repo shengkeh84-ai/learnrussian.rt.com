@@ -1,14 +1,14 @@
-- name: Lessons
+- name: 课程
   link: lessons
-- name: Alphabet
+- name: 字母表
   link: alphabet
-- name: Phonetics
+- name: 语音
   link: phonetics
-- name: Vocabulary
+- name: 词汇
   link: vocabulary
-- name: Tests
+- name: 测试
   link: tests
-- name: Grammar Tables
+- name: 语法表
   link: grammar-tables
-- name: Topics
+- name: 专题
   link: topics
