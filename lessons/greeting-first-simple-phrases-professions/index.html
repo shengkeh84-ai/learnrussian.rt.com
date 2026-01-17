@@ -867,3 +867,52 @@ title: "问候与简单短语，职业。 — 俄语大师课程"
 					
 					
 			</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 1. 定义慢速播放逻辑
+    var currentSlowAudio = null;
+    function playSlowly(url) {
+        if (currentSlowAudio) {
+            currentSlowAudio.pause();
+            currentSlowAudio.currentTime = 0;
+        }
+        currentSlowAudio = new Audio(url);
+        currentSlowAudio.playbackRate = 0.6; // 0.6倍速 (最适合初学者的速度)
+        currentSlowAudio.play();
+    }
+
+    // 2. 给每个播放器添加小乌龟按钮
+    var players = document.querySelectorAll('.playerstwo');
+    players.forEach(function(player) {
+        // 找到里面的播放按钮div，它含有 audio 属性
+        var audioDiv = player.querySelector('[audio]');
+        
+        // 如果找到了音频链接
+        if (audioDiv) {
+            var audioUrl = audioDiv.getAttribute('audio');
+            
+            // 创建乌龟按钮
+            var turtleBtn = document.createElement('div');
+            turtleBtn.innerHTML = '🐢';
+            turtleBtn.title = '0.6倍慢速播放';
+            // 样式：手型光标，大小，左边距，垂直居中
+            turtleBtn.style.cssText = 'cursor: pointer; font-size: 24px; margin-left: 10px; display: inline-block; vertical-align: middle; user-select: none;';
+            
+            // 点击事件
+            turtleBtn.onclick = function(e) {
+                // 阻止冒泡，防止触发原来的播放器
+                e.stopPropagation();
+                playSlowly(audioUrl);
+            };
+
+            // 调整父容器布局，让图片、播放按钮、乌龟横向排列
+            player.style.display = 'flex';
+            player.style.alignItems = 'center';
+            
+            // 把乌龟加进去
+            player.appendChild(turtleBtn);
+        }
+    });
+});
+</script>
